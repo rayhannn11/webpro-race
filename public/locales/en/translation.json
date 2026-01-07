@@ -1,0 +1,552 @@
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "vehicle": "Vehicle",
+    "warehouse": "Warehouse",
+    "partner": "Partner",
+    "contact": "Contact Us",
+    "tracking": "Tracking",
+    "selectLanguage": "Select Language"
+  },
+  "buttons": {
+    "contact": "Contact →",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "hero": {
+    "titles": {
+      "rajaCepat": "Raja Cepat.",
+      "express": "Raja Cepat Express",
+      "services": "Raja Cepat Services"
+    },
+    "languages": {
+      "indonesia": "Indonesia",
+      "english": "English"
+    },
+    "language": {
+      "switchLanguage": "Switch Language"
+    },
+    "descriptions": {
+      "rajaCepat": "Raja Cepat is a company that offers an app-based platform providing cross-border courier services. Raja Cepat focuses on delivery services through land and air transportation for domestic destinations. Raja Cepat has provided land cargo expedition services since 2018.",
+      "express": "Raja Cepat Express is a Point to Point delivery service that helps all your goods distribution needs with various fleet options and security guarantees for goods during delivery. We also provide delivery to many destinations in one rate.",
+      "services": "We operate quality vehicles with trained drivers, and can be relied upon to deliver your cargo. Timeliness is our priority. And we strive to do our best to ensure every item you entrust remains in good condition."
+    }
+  },
+  "scroll": {
+    "indicator": "Scroll"
+  },
+  "company": {
+    "name": "Raja Cepat",
+    "tagline": "Fast, Reliable, Trusted",
+    "founded": "Est. 2018",
+    "description": "Your trusted logistics partner"
+  },
+  "services": {
+    "delivery": {
+      "title": "Delivery Services",
+      "description": "Fast and reliable delivery solutions"
+    },
+    "cargo": {
+      "title": "Cargo Services",
+      "description": "Secure cargo transportation"
+    },
+    "express": {
+      "title": "Express Services",
+      "description": "Same-day delivery options"
+    }
+  },
+  "content": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again"
+  },
+  "languages": {
+    "indonesia": "Indonesia",
+    "english": "English"
+  },
+  "language": {
+    "switchLanguage": "Switch Language"
+  },
+  "advantages": {
+    "badge": "Why Choose Us",
+    "title": "Superiority",
+    "subtitle": "Best service with various options tailored to your needs",
+    "items": {
+      "doorToDoor": {
+        "title": "Door to Door (DTD)",
+        "description": "Providing services from goods pickup at pickup point to destination point."
+      },
+      "doorToPort": {
+        "title": "Door to Port (DTP)",
+        "description": "Providing pickup services according to sender's point to the destination port."
+      },
+      "portToPort": {
+        "title": "Port to Port (PTP)",
+        "description": "Providing fast pickup services from each widely spread Raja Cepat port until arrival at destination."
+      },
+      "realTime": {
+        "title": "Real Time",
+        "description": "Tracking supported by airline flight tracking."
+      },
+      "deliveryNote": {
+        "title": "Delivery Note",
+        "description": "Return from outer islands maximum 5 days."
+      },
+      "coverage": {
+        "title": "Coverage",
+        "description": "Wide delivery from Aceh to Papua."
+      }
+    }
+  },
+  "timeline": {
+    "title": "RACE Timeline",
+    "items": {
+      "2017": {
+        "title": "Established",
+        "description": "The beginning of RACE establishment."
+      },
+      "2019": {
+        "title": "Start Operations",
+        "description": "Started running operations."
+      },
+      "2020": {
+        "title": "Central Java Expansion",
+        "description": "Bandung, Semarang, Yogyakarta, Surabaya."
+      },
+      "2021": {
+        "title": "Denpasar",
+        "description": "Expansion to Bali region."
+      },
+      "2022": {
+        "title": "Java-Sumatra-Sulawesi",
+        "description": "Reaching strategic areas."
+      },
+      "2023": {
+        "title": "Frozen Unit",
+        "description": "Cold chain system."
+      },
+      "2024": {
+        "title": "Air Cargo",
+        "description": "Delivery via air."
+      }
+    }
+  },
+  "service": {
+    "title": "Our Services",
+    "subtitle": "We provide delivery services that can be used by various business owners, from SMEs to product distributors, resellers, and dropshippers.",
+    "carousel": {
+      "prevButton": "Previous",
+      "nextButton": "Next",
+      "dots": "Service {number} of {total}"
+    },
+    "items": {
+      "delivery": {
+        "title": "Delivery Services",
+        "description": "Fast and reliable delivery solutions for your business needs."
+      },
+      "cargo": {
+        "title": "Cargo Services",
+        "description": "Secure cargo transportation with professional handling."
+      },
+      "express": {
+        "title": "Express Services",
+        "description": "Same-day delivery options for urgent shipments."
+      },
+      "frozen": {
+        "title": "Frozen Services",
+        "description": "Cold chain delivery system for temperature-sensitive goods."
+      },
+      "air": {
+        "title": "Air Services",
+        "description": "Fast air delivery for long-distance shipping."
+      },
+      "distribution": {
+        "title": "Distribution Services",
+        "description": "Complete distribution solutions for your business."
+      }
+    }
+  },
+  "vehicle": {
+    "title": "Choose Vehicle",
+    "subtitle": "See the types of vehicles available",
+    "capacity": "Capacity",
+    "dimensions": "Dimensions",
+    "features": {
+      "wellMaintained": "All vehicles well-maintained",
+      "realPhotos": "Real vehicle photos",
+      "readyToday": "Ready to ship today"
+    },
+    "types": {
+      "cdeTruck": "CDE Truck",
+      "cdeFrozen": "CDE Frozen",
+      "l300": "L300",
+      "grandMax": "Grand Max",
+      "motor": "Motor"
+    }
+  },
+  "partners": {
+    "title": "Our Partners",
+    "subtitle": "Collaborating with industry leaders to deliver exceptional results",
+    "stats": [
+      {
+        "value": "99.9%",
+        "label": "Success Rate"
+      },
+      {
+        "value": "24/7",
+        "label": "Support"
+      }
+    ],
+    "companies": {
+      "auriga": {
+        "name": "Auriga",
+        "alt": "Auriga Logo"
+      },
+      "cosmax": {
+        "name": "Cosmax",
+        "alt": "Cosmax Logo"
+      },
+      "eurekabook": {
+        "name": "EurekaBook",
+        "alt": "EurekaBook Logo"
+      },
+      "gokomodo": {
+        "name": "Gokomodo",
+        "alt": "Gokomodo Logo"
+      },
+      "idmark": {
+        "name": "IdMark",
+        "alt": "IdMark Logo"
+      },
+      "jajai": {
+        "name": "Jajai",
+        "alt": "Jajai Logo"
+      },
+      "kitani": {
+        "name": "Kitani",
+        "alt": "Kitani Logo"
+      },
+      "erlangga": {
+        "name": "Erlangga",
+        "alt": "Erlangga Logo"
+      },
+      "sinbad": {
+        "name": "Sinbad",
+        "alt": "Sinbad Logo"
+      },
+      "super": {
+        "name": "Super",
+        "alt": "Super Logo"
+      },
+      "w": {
+        "name": "W",
+        "alt": "W Logo"
+      }
+    }
+  },
+  "contactPage": {
+    "heading": {
+      "title": "Let's Connect",
+      "highlightedWord": "Connect",
+      "subtitle": "Ready to turn your vision into reality? We're here to help you every step of the way."
+    },
+    "contactMethods": [
+      {
+        "type": "phone",
+        "title": "Call Us",
+        "value": "0812 8105 0420",
+        "description": "Available 24/7"
+      },
+      {
+        "type": "email",
+        "title": "Email",
+        "value": "info@rajacepat.com",
+        "description": "Fast response guaranteed"
+      },
+      {
+        "type": "location",
+        "title": "Visit Our Office",
+        "value": "Jl. H. Baping No. 100 Ciracas, East Jakarta",
+        "description": "Meet us in person"
+      }
+    ],
+    "businessHours": {
+      "title": "Business Hours",
+      "hours": [
+        {
+          "days": "Monday - Friday",
+          "time": "8:00 - 17:00"
+        },
+        {
+          "days": "Saturday",
+          "time": "8:00 - 15:00"
+        },
+        {
+          "days": "Sunday",
+          "time": "Closed"
+        }
+      ]
+    }
+  },
+  "footer": {
+    "logo": {
+      "name": "RajaCepat",
+      "tagline": "Express Delivery Service"
+    },
+    "description": "Trusted fast & secure delivery solution since 2018. Connecting Indonesia with the best express services.",
+    "sections": {
+      "company": {
+        "title": "Company",
+        "items": {
+          "contactUs": "Contact Us",
+          "partnership": "Partnership"
+        }
+      },
+      "help": {
+        "title": "Help",
+        "items": {
+          "terms": "Terms & Conditions",
+          "privacy": "Privacy Policy"
+        }
+      },
+      "downloadApp": {
+        "title": "Download App"
+      }
+    },
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "bottom": {
+      "copyright": "© 2025 RajaCepat. All rights reserved.",
+      "links": {
+        "privacyPolicy": "Privacy Policy",
+        "termsOfService": "Terms of Service",
+        "cookies": "Cookies"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "Raja Cepat is committed to protecting the privacy and security of your personal data",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": {
+          "welcome": "Welcome to the Raja Cepat platform. This Privacy Policy is designed to help you understand how we collect, use, disclose and/or process personal data that you have entrusted to us.",
+          "personalDataDefinition": "Personal Data means data, whether true or not, about an individual who can be identified from that data, or from that data and other information that can or is likely to be accessible to an organization.",
+          "disclaimer": "IF YOU DO NOT CONSENT TO THE PROCESSING OF YOUR PERSONAL DATA AS DESCRIBED IN THIS PRIVACY POLICY, PLEASE DO NOT USE OUR SERVICES OR ACCESS OUR WEBSITE."
+        }
+      },
+      "collection": {
+        "title": "When Do We Collect Personal Data?",
+        "content": {
+          "description": "We will/may collect your personal data in the following situations:",
+          "situations": [
+            "When you register and/or use our Services or Website",
+            "When you enter into an agreement or provide documents",
+            "When you submit any forms",
+            "When you use our electronic services",
+            "When you interact with us through various communication channels",
+            "When you conduct transactions through our Services",
+            "When you provide feedback, suggestions, or complaints"
+          ]
+        }
+      },
+      "dataTypes": {
+        "title": "Personal Data We Collect",
+        "content": {
+          "description": "Personal data that may be collected by Raja Cepat includes:",
+          "types": [
+            "Full name",
+            "Email address",
+            "Phone number",
+            "Date of birth",
+            "Gender",
+            "Billing address",
+            "Bank account and payment information",
+            "Service usage information"
+          ]
+        }
+      },
+      "location": {
+        "title": "Location Access",
+        "content": {
+          "backgroundAccess": {
+            "title": "Background Location Access",
+            "description": "This application collects location data from your device, including when the app is running in the background, to support real-time package delivery processes to customers."
+          },
+          "usageTitle": "Location information is used for:",
+          "usageItems": [
+            "Knowing the current location of drivers or couriers",
+            "Ensuring the package delivery process runs according to predetermined routes and schedules",
+            "Providing real-time location status updates to customers"
+          ],
+          "userControl": {
+            "title": "User Control:",
+            "description": "You can revoke location access permission at any time through your device settings. However, trip tracking functionality may not operate optimally without active location access."
+          }
+        }
+      },
+      "usage": {
+        "title": "How Do We Use Your Information?",
+        "content": {
+          "description": "We use your personal data for various purposes, including:",
+          "purposes": [
+            {
+              "title": "Service Management",
+              "description": "Managing, operating, and providing access to our services"
+            },
+            {
+              "title": "Transaction Processing",
+              "description": "Processing your applications, transactions, and communications"
+            },
+            {
+              "title": "Personalization",
+              "description": "Customizing your experience by displaying content according to your preferences"
+            },
+            {
+              "title": "Security",
+              "description": "Protecting personal safety and the rights, property, or safety of others"
+            },
+            {
+              "title": "Communication",
+              "description": "Contacting you for service and administrative purposes"
+            },
+            {
+              "title": "Research & Development",
+              "description": "Analyzing service usage to improve customer experience"
+            }
+          ]
+        }
+      },
+      "security": {
+        "title": "Data Security",
+        "content": {
+          "measures": {
+            "title": "Security Measures",
+            "description": "We implement various security measures to ensure the safety of your personal data in our systems. User personal data is behind secure networks and can only be accessed by a small number of employees who have special access rights."
+          },
+          "notice": {
+            "title": "Important Notice",
+            "description": "Although we use reasonable security arrangements, there is no guarantee of absolute security. Third parties may intercept or access personal data without permission, or technology may malfunction."
+          }
+        }
+      },
+      "rights": {
+        "title": "Your Rights Over Personal Data",
+        "content": {
+          "optOut": {
+            "title": "Opt Out",
+            "description": "You can withdraw your consent to the collection, use and/or disclosure of your personal data.",
+            "contact": "Email: info@rajacepat.co.id"
+          },
+          "access": {
+            "title": "Access Data",
+            "description": "You can request access and/or correction of your personal data that we hold.",
+            "processingTime": "Processing time: 30 days"
+          },
+          "consequences": {
+            "title": "Consequences of Withdrawal",
+            "description": "Withdrawal of consent may result in us being unable to continue providing Services to you, depending on the extent of the withdrawal."
+          }
+        }
+      }
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "If you have questions about this privacy policy or want to exercise your rights over personal data, please don't hesitate to contact us.",
+      "email": "info@rajacepat.co.id"
+    },
+    "footer": {
+      "copyright": "© 2025 Raja Cepat. All rights reserved.",
+      "disclaimer": "This Privacy Policy may be changed at any time. Changes will be announced through our website."
+    }
+  },
+  "contact": {
+    "heading": {
+      "title": "Contact Us",
+      "subtitle": "We are ready to support your logistics needs."
+    },
+    "contactMethods": {
+      "phone": {
+        "title": "Phone",
+        "value": "+62 812 3456 7890",
+        "description": "Reach out during business hours for a quick response."
+      },
+      "email": {
+        "title": "Email",
+        "value": "info@rajacepat.id",
+        "description": "We’ll respond to your email as soon as possible."
+      },
+      "location": {
+        "title": "Address",
+        "value": "Jl. Logistik No. 88, Jakarta, Indonesia",
+        "description": "Visit our office during business hours."
+      }
+    },
+    "businessHours": {
+      "title": "Business Hours",
+      "hours": {
+        "monFri": {
+          "days": "Monday - Friday",
+          "time": "08:00 AM - 05:00 PM"
+        },
+        "saturday": {
+          "days": "Saturday",
+          "time": "08:00 AM - 03:00 PM"
+        },
+        "sunday": {
+          "days": "Sunday",
+          "time": "Closed"
+        }
+      },
+      "timezoneNote": "All times are in WIB (GMT+7) timezone."
+    }
+  },
+  "tracking": {
+    "title": "Tracking Delivery",
+    "subtitle": "Track your package easily",
+    "resiRace": "RACE Receipt",
+    "noFaktur": "Invoice No.",
+    "noSuratJalan": "Delivery Note No.",
+    "placeholderResi": "Enter receipt number...",
+    "placeholderFaktur": "Enter invoice number...",
+    "placeholderSurat": "Enter delivery note number...",
+    "helperText": "Type number to search automatically",
+    "loading": "Loading tracking data...",
+    "noDataFound": "Data not found",
+    "errorFetching": "Failed to load tracking data",
+    "selectOrder": "Select Delivery",
+    "results": "results",
+    "emptyState": "Enter tracking number to start searching",
+    "detailTitle": "Delivery Details",
+    "trackingNumber": "Receipt No.",
+    "orderNumber": "Order No.",
+    "status": "Status",
+    "customer": "Customer",
+    "origin": "Origin Address",
+    "destination": "Destination Address",
+    "notAvailable": "Not available",
+    "pickupDate": "Pickup Date",
+    "vehicle": "Vehicle",
+    "notAssigned": "Not yet assigned",
+    "weight": "Tonnage",
+    "notSpecified": "-",
+    "notes": "Notes",
+    "memo": "Memo",
+    "historyTitle": "Delivery History",
+    "trackingProgress": "Track your package journey",
+    "delivered": "Goods Received",
+    "inTransit": "In Transit",
+    "waitingVehicle": "Waiting for vehicle assignment",
+    "pickedUp": "Goods Picked Up",
+    "from": "From",
+    "orderReceived": "Order Received",
+    "completed": "Completed",
+    "additionalNote": "Additional Note"
+  }
+}

@@ -1,0 +1,552 @@
+{
+  "navigation": {
+    "home": "Rumah",
+    "services": "Layanan",
+    "vehicle": "Kendaraan",
+    "warehouse": "Gudang",
+    "partner": "Mitra",
+    "contact": "Hubungi kami",
+    "tracking": "Tracking",
+    "selectLanguage": "Pilih bahasa"
+  },
+  "buttons": {
+    "contact": "Kontak →",
+    "getStarted": "Mulai",
+    "learnMore": "Pelajari lebih lanjut"
+  },
+  "hero": {
+    "titles": {
+      "rajaCepat": "Raja Cepat.",
+      "express": "Raja Cepat Express",
+      "services": "Layanan Raja Cepat"
+    },
+    "languages": {
+      "indonesia": "Indonesia",
+      "english": "Bahasa inggris"
+    },
+    "language": {
+      "switchLanguage": "Beralih bahasa"
+    },
+    "descriptions": {
+      "rajaCepat": "Raja Cepat adalah perusahaan yang menawarkan platform berbasis aplikasi yang menyediakan layanan kurir lintas batas. Raja Cepat berfokus pada layanan pengiriman melalui transportasi darat dan udara untuk tujuan domestik. Raja Cepat telah menyediakan layanan ekspedisi kargo darat sejak tahun 2018.",
+      "express": "Raja Cepat Express adalah layanan pengiriman Point to Point yang membantu semua kebutuhan distribusi barang Anda dengan beragam pilihan armada dan jaminan keamanan barang selama pengiriman. Kami juga menyediakan layanan pengiriman ke banyak tujuan dengan satu tarif. ",
+      "services": "Kami mengoperasikan kendaraan berkualitas dengan pengemudi terlatih, dan dapat diandalkan untuk mengantarkan kargo Anda. Ketepatan waktu adalah prioritas kami. Dan kami berupaya sebaik mungkin untuk memastikan setiap barang yang Anda percayakan tetap dalam kondisi baik."
+    }
+  },
+  "scroll": {
+    "indicator": "Menggulir"
+  },
+  "company": {
+    "name": "Raja Cepat",
+    "tagline": "Cepat, andal, tepercaya",
+    "founded": "Est. ",
+    "description": "Mitra logistik tepercaya Anda"
+  },
+  "services": {
+    "delivery": {
+      "title": "Layanan Pengiriman",
+      "description": "Solusi pengiriman yang cepat dan andal"
+    },
+    "cargo": {
+      "title": "Layanan kargo",
+      "description": "Transportasi kargo yang aman"
+    },
+    "express": {
+      "title": "Layanan Ekspres",
+      "description": "Opsi pengiriman hari yang sama"
+    }
+  },
+  "content": {
+    "loading": "Memuat...",
+    "error": "Ada yang salah",
+    "retry": "Coba lagi"
+  },
+  "languages": {
+    "indonesia": "Indonesia",
+    "english": "Bahasa inggris"
+  },
+  "language": {
+    "switchLanguage": "Beralih bahasa"
+  },
+  "advantages": {
+    "badge": "Mengapa Memilih Kami",
+    "title": "Keunggulan",
+    "subtitle": "Layanan terbaik dengan berbagai opsi yang disesuaikan dengan kebutuhan Anda",
+    "items": {
+      "doorToDoor": {
+        "title": "Pintu ke pintu (DTD)",
+        "description": "Memberikan layanan dari penjemputan barang di titik penjemputan ke titik tujuan."
+      },
+      "doorToPort": {
+        "title": "Pintu ke Port (DTP)",
+        "description": "Memberikan layanan pickup sesuai dengan poin pengirim ke port tujuan."
+      },
+      "portToPort": {
+        "title": "Port ke port (PTP)",
+        "description": "Memberikan layanan penjemputan cepat dari masing -masing port Raja Cepat yang tersebar luas hingga kedatangan di tujuan."
+      },
+      "realTime": {
+        "title": "Waktu nyata",
+        "description": "Pelacakan yang didukung oleh pelacakan penerbangan maskapai."
+      },
+      "deliveryNote": {
+        "title": "Catatan pengiriman",
+        "description": "Kembali dari Kepulauan Luar Maksimal 5 hari."
+      },
+      "coverage": {
+        "title": "Cakupan",
+        "description": "Pengiriman luas dari Aceh ke Papua."
+      }
+    }
+  },
+  "timeline": {
+    "title": "Timeline RACE",
+    "items": {
+      "2017": {
+        "title": "Didirikan",
+        "description": "Awal pendirian ras."
+      },
+      "2019": {
+        "title": "Mulai operasi",
+        "description": "Mulai menjalankan operasi."
+      },
+      "2020": {
+        "title": "Ekspansi Java Tengah",
+        "description": "Bandung, Semarang, Yogyakarta, Surabaya."
+      },
+      "2021": {
+        "title": "Denpasar",
+        "description": "Ekspansi ke wilayah Bali."
+      },
+      "2022": {
+        "title": "Java-Sumatra-Sulawesi",
+        "description": "Mencapai bidang strategis."
+      },
+      "2023": {
+        "title": "Unit beku",
+        "description": "Sistem rantai dingin."
+      },
+      "2024": {
+        "title": "Kargo udara",
+        "description": "Pengiriman melalui udara."
+      }
+    }
+  },
+  "service": {
+    "title": "Layanan kami",
+    "subtitle": "Kami menyediakan layanan pengiriman yang dapat digunakan oleh berbagai pemilik bisnis, dari UKM hingga distributor produk, reseller, dan dropshippers.",
+    "carousel": {
+      "prevButton": "Sebelumnya",
+      "nextButton": "Berikutnya",
+      "dots": "Layanan {angka} dari {total}"
+    },
+    "items": {
+      "delivery": {
+        "title": "Layanan Pengiriman",
+        "description": "Solusi pengiriman yang cepat dan andal untuk kebutuhan bisnis Anda."
+      },
+      "cargo": {
+        "title": "Layanan kargo",
+        "description": "Amankan transportasi kargo dengan penanganan profesional."
+      },
+      "express": {
+        "title": "Layanan Ekspres",
+        "description": "Opsi pengiriman hari yang sama untuk pengiriman yang mendesak."
+      },
+      "frozen": {
+        "title": "Layanan beku",
+        "description": "Sistem pengiriman rantai dingin untuk barang yang sensitif terhadap suhu."
+      },
+      "air": {
+        "title": "Layanan Udara",
+        "description": "Pengiriman udara cepat untuk pengiriman jarak jauh."
+      },
+      "distribution": {
+        "title": "Layanan Distribusi",
+        "description": "Solusi distribusi lengkap untuk bisnis Anda."
+      }
+    }
+  },
+  "vehicle": {
+    "title": "Pilih Kendaraan",
+    "subtitle": "Lihat jenis kendaraan yang tersedia",
+    "capacity": "Kapasitas",
+    "dimensions": "Ukuran",
+    "features": {
+      "wellMaintained": "Semua kendaraan terpelihara dengan baik",
+      "realPhotos": "Foto kendaraan asli",
+      "readyToday": "Siap dikirim hari ini"
+    },
+    "types": {
+      "cdeTruck": "Truk cde",
+      "cdeFrozen": "Cde Frozen",
+      "l300": "L300",
+      "grandMax": "Grand Max",
+      "motor": "Motor"
+    }
+  },
+  "partners": {
+    "title": "Mitra kami",
+    "subtitle": "Berkolaborasi dengan para pemimpin industri untuk memberikan hasil yang luar biasa",
+    "stats": [
+      {
+        "value": "99,9%",
+        "label": "Tingkat keberhasilan"
+      },
+      {
+        "value": "24/7",
+        "label": "Mendukung"
+      }
+    ],
+    "companies": {
+      "auriga": {
+        "name": "Auriga",
+        "alt": "Logo Auriga"
+      },
+      "cosmax": {
+        "name": "Cosmax",
+        "alt": "Logo Cosmax"
+      },
+      "eurekabook": {
+        "name": "Eurekabook",
+        "alt": "Logo Eurekabook"
+      },
+      "gokomodo": {
+        "name": "Gokomodo",
+        "alt": "Logo Gokomodo"
+      },
+      "idmark": {
+        "name": "Idmark",
+        "alt": "Logo idmark"
+      },
+      "jajai": {
+        "name": "Jajai",
+        "alt": "Logo Jajai"
+      },
+      "kitani": {
+        "name": "Kitani",
+        "alt": "Logo Kitani"
+      },
+      "erlangga": {
+        "name": "Erlangan",
+        "alt": "Logo Erlangan"
+      },
+      "sinbad": {
+        "name": "Sinbad",
+        "alt": "Logo Sinbad"
+      },
+      "super": {
+        "name": "Super",
+        "alt": "Logo Super"
+      },
+      "w": {
+        "name": "W",
+        "alt": "Logo W."
+      }
+    }
+  },
+  "contactPage": {
+    "heading": {
+      "title": "Mari terhubung",
+      "highlightedWord": "Menghubungkan",
+      "subtitle": "Siap mengubah visi Anda menjadi kenyataan? "
+    },
+    "contactMethods": [
+      {
+        "type": "telepon",
+        "title": "Hubungi kami",
+        "value": "0812 8105 0420",
+        "description": "Tersedia 24/7"
+      },
+      {
+        "type": "e-mail",
+        "title": "E-mail",
+        "value": "info@rajacepat.com",
+        "description": "Tanggapan cepat dijamin"
+      },
+      {
+        "type": "Lokasi",
+        "title": "Kunjungi kantor kami",
+        "value": "Jl. ",
+        "description": "Temui kami secara langsung"
+      }
+    ],
+    "businessHours": {
+      "title": "Jam kerja",
+      "hours": [
+        {
+          "days": "Senin - Jumat",
+          "time": "8:00 - 17:00"
+        },
+        {
+          "days": "Sabtu",
+          "time": "8:00 - 15:00"
+        },
+        {
+          "days": "Minggu",
+          "time": "Tutup"
+        }
+      ]
+    }
+  },
+  "footer": {
+    "logo": {
+      "name": "Rajacepat",
+      "tagline": "Layanan Pengiriman Ekspres"
+    },
+    "description": "Solusi Pengiriman Cepat & Aman Tepercaya Sejak 2018. Menghubungkan Indonesia dengan Layanan Ekspres Terbaik.",
+    "sections": {
+      "company": {
+        "title": "Perusahaan",
+        "items": {
+          "contactUs": "Hubungi kami",
+          "partnership": "Kemitraan"
+        }
+      },
+      "help": {
+        "title": "Membantu",
+        "items": {
+          "terms": "Syarat & Ketentuan",
+          "privacy": "Kebijakan Privasi"
+        }
+      },
+      "downloadApp": {
+        "title": "Unduh aplikasi"
+      }
+    },
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "bottom": {
+      "copyright": "© 2025 Rajacepat. ",
+      "links": {
+        "privacyPolicy": "Kebijakan Privasi",
+        "termsOfService": "Ketentuan Layanan",
+        "cookies": "Cookie"
+      }
+    }
+  },
+  "privacy": {
+    "title": "Kebijakan Privasi",
+    "subtitle": "Raja Cepat berkomitmen untuk melindungi privasi dan keamanan data pribadi Anda",
+    "sections": {
+      "introduction": {
+        "title": "Perkenalan",
+        "content": {
+          "welcome": "Selamat datang di platform Raja Cepat. ",
+          "personalDataDefinition": "Data pribadi berarti data, baik benar atau tidak, tentang individu yang dapat diidentifikasi dari data itu, atau dari data itu dan informasi lain yang dapat atau cenderung dapat diakses oleh organisasi.",
+          "disclaimer": "Jika Anda tidak menyetujui pemrosesan data pribadi Anda seperti yang dijelaskan dalam Kebijakan Privasi ini, jangan gunakan Layanan kami atau akses Situs Web kami."
+        }
+      },
+      "collection": {
+        "title": "Kapan kita mengumpulkan data pribadi?",
+        "content": {
+          "description": "Kami akan/dapat mengumpulkan data pribadi Anda dalam situasi berikut:",
+          "situations": [
+            "Saat Anda mendaftar dan/atau menggunakan layanan atau situs web kami",
+            "Saat Anda menandatangani perjanjian atau memberikan dokumen",
+            "Saat Anda mengirimkan formulir apa pun",
+            "Saat Anda menggunakan layanan elektronik kami",
+            "Saat Anda berinteraksi dengan kami melalui berbagai saluran komunikasi",
+            "Saat Anda melakukan transaksi melalui layanan kami",
+            "Saat Anda memberikan umpan balik, saran, atau keluhan"
+          ]
+        }
+      },
+      "dataTypes": {
+        "title": "Data pribadi yang kami kumpulkan",
+        "content": {
+          "description": "Data pribadi yang dapat dikumpulkan oleh Raja Cepat meliputi:",
+          "types": [
+            "Nama lengkap",
+            "Alamat email",
+            "Nomor telepon",
+            "Tanggal lahir",
+            "Jenis kelamin",
+            "Alamat penagihan",
+            "Rekening bank dan informasi pembayaran",
+            "Informasi Penggunaan Layanan"
+          ]
+        }
+      },
+      "location": {
+        "title": "Akses Lokasi",
+        "content": {
+          "backgroundAccess": {
+            "title": "Akses Lokasi Latar Belakang",
+            "description": "Aplikasi ini mengumpulkan data lokasi dari perangkat Anda, termasuk ketika aplikasi berjalan di latar belakang, untuk mendukung proses pengiriman paket real-time kepada pelanggan."
+          },
+          "usageTitle": "Informasi lokasi digunakan untuk:",
+          "usageItems": [
+            "Mengetahui lokasi pengemudi atau kurir saat ini",
+            "Memastikan proses pengiriman paket berjalan sesuai dengan rute dan jadwal yang telah ditentukan",
+            "Memberikan pembaruan status lokasi real-time kepada pelanggan"
+          ],
+          "userControl": {
+            "title": "Kontrol Pengguna:",
+            "description": "Anda dapat mencabut izin akses lokasi kapan saja melalui pengaturan perangkat Anda. "
+          }
+        }
+      },
+      "usage": {
+        "title": "Bagaimana kami menggunakan informasi Anda?",
+        "content": {
+          "description": "Kami menggunakan data pribadi Anda untuk berbagai tujuan, termasuk:",
+          "purposes": [
+            {
+              "title": "Manajemen Layanan",
+              "description": "Mengelola, mengoperasikan, dan menyediakan akses ke layanan kami"
+            },
+            {
+              "title": "Pemrosesan transaksi",
+              "description": "Memproses aplikasi, transaksi, dan komunikasi Anda"
+            },
+            {
+              "title": "Personalisasi",
+              "description": "Menyesuaikan pengalaman Anda dengan menampilkan konten sesuai dengan preferensi Anda"
+            },
+            {
+              "title": "Keamanan",
+              "description": "Melindungi keselamatan pribadi dan hak, properti, atau keselamatan orang lain"
+            },
+            {
+              "title": "Komunikasi",
+              "description": "Menghubungi Anda untuk tujuan layanan dan administrasi"
+            },
+            {
+              "title": "Penelitian & Pengembangan",
+              "description": "Menganalisis penggunaan layanan untuk meningkatkan pengalaman pelanggan"
+            }
+          ]
+        }
+      },
+      "security": {
+        "title": "Keamanan Data",
+        "content": {
+          "measures": {
+            "title": "Langkah -langkah keamanan",
+            "description": "Kami menerapkan berbagai langkah keamanan untuk memastikan keamanan data pribadi Anda dalam sistem kami. "
+          },
+          "notice": {
+            "title": "Pemberitahuan penting",
+            "description": "Meskipun kami menggunakan pengaturan keamanan yang wajar, tidak ada jaminan keamanan absolut. "
+          }
+        }
+      },
+      "rights": {
+        "title": "Hak Anda atas data pribadi",
+        "content": {
+          "optOut": {
+            "title": "Memilih keluar",
+            "description": "Anda dapat menarik persetujuan Anda untuk pengumpulan, penggunaan, dan/atau pengungkapan data pribadi Anda.",
+            "contact": "Email: info@rajacepat.co.id"
+          },
+          "access": {
+            "title": "Akses data",
+            "description": "Anda dapat meminta akses dan/atau koreksi data pribadi Anda yang kami pegang.",
+            "processingTime": "Waktu pemrosesan: 30 hari"
+          },
+          "consequences": {
+            "title": "Konsekuensi penarikan",
+            "description": "Penarikan persetujuan dapat mengakibatkan kami tidak dapat terus memberikan layanan kepada Anda, tergantung pada tingkat penarikan."
+          }
+        }
+      }
+    },
+    "contact": {
+      "title": "Hubungi kami",
+      "description": "Jika Anda memiliki pertanyaan tentang kebijakan privasi ini atau ingin menggunakan hak -hak Anda melalui data pribadi, jangan ragu untuk menghubungi kami.",
+      "email": "info@rajacepat.co.id"
+    },
+    "footer": {
+      "copyright": "© 2025 Raja Cepat. ",
+      "disclaimer": "Kebijakan privasi ini dapat diubah kapan saja. "
+    }
+  },
+  "contact": {
+    "heading": {
+      "title": "Hubungi kami",
+      "subtitle": "Kami siap mendukung kebutuhan logistik Anda."
+    },
+    "contactMethods": {
+      "phone": {
+        "title": "Telepon",
+        "value": "+62 812 3456 7890",
+        "description": "Jangkau selama jam kerja untuk tanggapan cepat."
+      },
+      "email": {
+        "title": "E-mail",
+        "value": "info@rajacepat.id",
+        "description": "Kami akan menanggapi email Anda sesegera mungkin."
+      },
+      "location": {
+        "title": "Alamat",
+        "value": "Jl. H. Baping No.100 Ciracas, Jakarta Timur ",
+        "description": "Kunjungi kantor kami selama jam kerja."
+      }
+    },
+    "businessHours": {
+      "title": "Jam kerja",
+      "hours": {
+        "monFri": {
+          "days": "Senin - Jumat",
+          "time": "08:00 pagi - 17:00"
+        },
+        "saturday": {
+          "days": "Sabtu",
+          "time": "08:00 pagi - 15:00"
+        },
+        "sunday": {
+          "days": "Minggu",
+          "time": "Tertutup"
+        }
+      },
+      "timezoneNote": "Semua waktu di WIB (GMT+7) zona waktu."
+    }
+  },
+  "tracking": {
+    "title": "Tracking Pengiriman",
+    "subtitle": "Lacak paket Anda dengan mudah",
+    "resiRace": "Resi RACE",
+    "noFaktur": "No. Faktur",
+    "noSuratJalan": "No. Surat Jalan",
+    "placeholderResi": "Masukkan nomor resi...",
+    "placeholderFaktur": "Masukkan nomor faktur...",
+    "placeholderSurat": "Masukkan nomor surat jalan...",
+    "helperText": "Ketik nomor untuk mencari secara otomatis",
+    "loading": "Memuat data tracking...",
+    "noDataFound": "Data tidak ditemukan",
+    "errorFetching": "Gagal memuat data tracking",
+    "selectOrder": "Pilih Pengiriman",
+    "results": "hasil",
+    "emptyState": "Masukkan nomor tracking untuk memulai pencarian",
+    "detailTitle": "Detail Pengiriman",
+    "trackingNumber": "No. Resi",
+    "orderNumber": "No. Order",
+    "status": "Status",
+    "customer": "Pelanggan",
+    "origin": "Alamat Asal",
+    "destination": "Alamat Tujuan",
+    "notAvailable": "Tidak tersedia",
+    "pickupDate": "Tanggal Pickup",
+    "vehicle": "Kendaraan",
+    "notAssigned": "Belum ditentukan",
+    "weight": "Tonase",
+    "notSpecified": "-",
+    "notes": "Keterangan",
+    "memo": "Memo",
+    "historyTitle": "Riwayat Pengiriman",
+    "trackingProgress": "Lacak perjalanan paket Anda",
+    "delivered": "Barang Diterima",
+    "inTransit": "Dalam Pengiriman",
+    "waitingVehicle": "Menunggu penugasan kendaraan",
+    "pickedUp": "Barang Dipickup",
+    "from": "Dari",
+    "orderReceived": "Pesanan Diterima",
+    "completed": "Selesai",
+    "additionalNote": "Catatan Tambahan"
+  }
+}
