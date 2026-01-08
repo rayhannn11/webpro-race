@@ -1,9 +1,23 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
   images: {
-    domains: ['cdn-icons-png.flaticon.com', 'storage.googleapis.com', 'api.eurekalogistics.co.id'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn-icons-png.flaticon.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.eurekalogistics.co.id',
+      },
+    ],
   },
   output: 'standalone',
 };
 
-module.exports = nextConfig;
+export default nextConfig;

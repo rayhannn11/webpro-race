@@ -5,11 +5,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
 
-interface Props {
-  params: { locale: string };
-}
-
-export default function ContactSection({ params }: Props) {
+export default function ContactSection() {
   const { t } = useTranslation();
 
   return (

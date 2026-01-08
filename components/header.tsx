@@ -26,10 +26,7 @@ const Header = () => {
   const { t } = useTranslation();
 
   const navItems = [
-    { href: "#beranda", label: t("navigation.home") },
-    { href: "#layanan", label: t("navigation.services") },
-    { href: "#kendaraan", label: t("navigation.vehicle") },
-    { href: "#mitra", label: t("navigation.partner") },
+    { href: "/", label: t("navigation.home"), isPage: true },
     { href: "/tracking", label: t("navigation.tracking"), isPage: true },
   ];
 
@@ -111,22 +108,28 @@ const Header = () => {
         {/* Menu tengah - hanya tampil di halaman utama */}
         {!isSpecialPage && (
           <nav className="hidden md:flex justify-center items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-base font-normal border-b-2 transition 
-                ${
-                  item.isPage && pathname.includes("/tracking")
-                    ? "text-orange-500 border-orange-500"
-                    : activeSection === item.href
-                    ? "text-blue-600 border-blue-600"
-                    : "text-gray-700 border-transparent hover:border-blue-600"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isHome = item.href === "/";
+              const isActive = isHome
+                ? pathname === "/" || /^\/[a-z]{2}(?:\/)?$/.test(pathname)
+                : pathname.includes(item.href);
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`text-base font-normal border-b-2 transition ${
+                    isActive
+                      ? item.href === "/tracking"
+                        ? "text-orange-500 border-orange-500"
+                        : "text-blue-600 border-blue-600"
+                      : "text-gray-700 border-transparent hover:border-blue-600"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
         )}
 

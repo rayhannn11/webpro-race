@@ -1,8 +1,14 @@
 # Raja Cepat - Docker Setup
 
 ## Prerequisites
-- Docker
-- Docker Compose
+- Docker 20.10+
+- Docker Compose v2+
+- Node.js 22+ (for local development)
+
+## Tech Stack
+- **Next.js 16** with App Router
+- **Node.js 22 Alpine** for optimized image size
+- **Multi-stage build** for production optimization
 
 ## Quick Start
 
@@ -61,14 +67,37 @@ docker-compose up -d --build
 docker-compose down -v --rmi all
 ```
 
+## Health Check
+
+Container dilengkapi dengan health check untuk monitoring:
+- Interval: 30 detik
+- Timeout: 10 detik
+- Retries: 3 kali
+- Start period: 40 detik
+
+Check health status:
+```bash
+docker inspect --format='{{.State.Health.Status}}' raja-cepat-app
+```
+
 ## Production Deployment
 
 Untuk production, pastikan:
 1. Set `NODE_ENV=production`
-2. Gunakan SSL/HTTPS
+2. Gunakan SSL/HTTPS (reverse proxy dengan Nginx/Caddy)
 3. Set proper API endpoints
 4. Configure proper logging
-5. Set resource limits di docker-compose.yml jika diperlukan
+5. Set resource limits di docker-compose.yml:
+   ```yaml
+   deploy:
+     resources:
+       limits:
+         cpus: '1'
+         memory: 1G
+       reservations:
+         cpus: '0.5'
+         memory: 512M
+   ```
 
 ## Troubleshooting
 
@@ -90,14 +119,31 @@ docker ps
 docker-compose ps
 ```
 
+### Check health status
+```bash
+docker inspect raja-cepat-app | grep -A 10 Health
+```
+
+## Docker Image Optimization
+
+Image menggunakan **multi-stage build** dengan 3 tahap:
+1. **deps** - Install dependencies
+2. **builder** - Build aplikasi Next.js
+3. **runner** - Runtime image yang minimal
+
+Hasil:
+- Image size: ~150-200MB (Alpine-based)
+- Non-root user untuk security
+- Standalone output untuk optimal performance
+
 ## Structure
 
 ```
 .
-├── Dockerfile              # Multi-stage Docker build
-├── docker-compose.yml      # Docker Compose configuration
-├── .dockerignore          # Files to exclude from Docker build
-└── next.config.ts         # Next.js config (dengan output: standalone)
+├── Dockerfile              # Multi-stage Docker build (Node.js 22)
+├── docker-compose.yml      # Docker Compose dengan health check
+├── .dockerignore          # Files to exclude dari Docker build
+└── next.config.ts         # Next.js 16 config (standalone output)
 ```
 
 ## Akses Aplikasi

@@ -16,14 +16,14 @@ export const metadata: Metadata = {
   description: "Multilingual site",
 };
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!languages.includes(locale)) {
     notFound(); 
