@@ -1,16 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDebounce } from "@/lib/hooks/useDebounce";
 import { getTrackingDetails, TrackingData } from "@/lib/api";
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
+import { I18nProvider } from "@/components/I18nProvider";
 import Image from "next/image";
 import { Package, Search, Truck } from "lucide-react";
 
-export default function TrackingPage() {
-  const { t } = useTranslation();
+function TrackingPageContent() {
+  const { t, ready } = useTranslation();
   const [searchValue, setSearchValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -64,6 +65,30 @@ export default function TrackingPage() {
       second: "2-digit",
     });
   };
+
+  const renderAddress = (addr: any) => {
+    if (!addr) return "Lokasi tidak tersedia";
+    if (typeof addr === "string") return addr || "Lokasi tidak tersedia";
+    if (typeof addr === "object") {
+      // Try common fields then fallback to JSON string
+      return (
+        (addr.address && String(addr.address)) ||
+        (addr.formatted && String(addr.formatted)) ||
+        (addr.name && String(addr.name)) ||
+        JSON.stringify(addr)
+      );
+    }
+    return String(addr);
+  };
+
+  // Don't render until translations are ready
+  if (!ready) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -238,8 +263,7 @@ export default function TrackingPage() {
                     Lokasi Driver Terkini
                   </p>
                   <p className="text-sm text-gray-900 font-medium leading-relaxed">
-                    {trackingData.positionDriverNow.address ||
-                      "Lokasi tidak tersedia"}
+                    {renderAddress(trackingData.positionDriverNow.address)}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
                     Update terakhir:{" "}
@@ -299,16 +323,16 @@ export default function TrackingPage() {
                             {status.memo || "No memo"}
                           </td>
                           <td className="py-4 px-4">
-                            {status.foto &&
+                            {typeof status.foto === "string" &&
                             !status.foto.includes("no-pictures") ? (
                               <a
-                                href={status.foto}
+                                href={String(status.foto)}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="block"
                               >
                                 <Image
-                                  src={status.foto}
+                                  src={String(status.foto)}
                                   alt="Status foto"
                                   width={80}
                                   height={80}
@@ -332,5 +356,13 @@ export default function TrackingPage() {
       </div>
       <Footer />
     </>
+  );
+}
+
+export default function TrackingPage() {
+  return (
+    <I18nProvider>
+      <TrackingPageContent />
+    </I18nProvider>
   );
 }

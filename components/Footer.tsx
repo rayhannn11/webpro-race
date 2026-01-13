@@ -7,12 +7,17 @@ import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 
 export default function Footer() {
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
   const [currentYear, setCurrentYear] = useState(2025);
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
   }, []);
+
+  // Don't render until translations are ready
+  if (!ready) {
+    return null;
+  }
 
   return (
     <footer className="relative bg-[#0f172a]/80 text-white overflow-hidden backdrop-blur-md font-montserrat">

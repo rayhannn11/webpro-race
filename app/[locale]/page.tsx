@@ -3,14 +3,15 @@
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
 import VehicleSection from "@/components/KendaraanGaleri";
+import HeroSlider from "@/components/HeroSlider";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Banner from "@/components/banner";
 import Keunggulan from "@/components/keunggulan";
 import { useState, useEffect } from "react";
 import RaceTimeLine from "@/components/RaceTimeLine";
 import Partner from "@/components/Partners";
 import { useTranslation } from "react-i18next";
+import { I18nProvider } from "@/components/I18nProvider";
 
 const getServiceCards = (t: (key: string) => string) => [
   {
@@ -51,8 +52,8 @@ const getServiceCards = (t: (key: string) => string) => [
   },
 ];
 
-export default function Page() {
-  const { t } = useTranslation();
+function HomePageContent() {
+  const { t, ready } = useTranslation();
 
   const serviceCards = getServiceCards(t);
   const [index, setIndex] = useState(0);
@@ -75,11 +76,23 @@ export default function Page() {
     return () => clearInterval(interval);
   }, [isAutoPlay, index]);
 
+  // Don't render until translations are ready
+  if (!ready) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gradient-to-br from-white via-sky-200 to-blue-200 text-gray-800 pt-20">
-        <Banner />
+      <main className="min-h-screen bg-gradient-to-br from-white via-sky-50 to-blue-50 text-gray-800">
+        {/* Hero Slider - Full Width */}
+        <HeroSlider />
+        
+        {/* Content Sections */}
         <Keunggulan />
         <RaceTimeLine />
         {/* OUR SERVICES */}
@@ -225,5 +238,13 @@ export default function Page() {
         <Footer />
       </main>
     </>
+  );
+}
+
+export default function Page() {
+  return (
+    <I18nProvider>
+      <HomePageContent />
+    </I18nProvider>
   );
 }

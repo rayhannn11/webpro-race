@@ -23,12 +23,10 @@ const Header = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const pathname = usePathname();
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
 
-  const navItems = [
-    { href: "/", label: t("navigation.home"), isPage: true },
-    { href: "/tracking", label: t("navigation.tracking"), isPage: true },
-  ];
+  // Tracking moved to right side of navbar
+  const navItems: never[] = [];
 
   const currentLanguage =
     languages.find((lang) => lang.code === i18n.language) || languages[0];
@@ -93,9 +91,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/70 backdrop-blur shadow-sm" : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 w-full z-50 bg-white shadow-md transition-all duration-300"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo kiri */}
@@ -105,35 +101,10 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Menu tengah - hanya tampil di halaman utama */}
-        {!isSpecialPage && (
-          <nav className="hidden md:flex justify-center items-center gap-8">
-            {navItems.map((item) => {
-              const isHome = item.href === "/";
-              const isActive = isHome
-                ? pathname === "/" || /^\/[a-z]{2}(?:\/)?$/.test(pathname)
-                : pathname.includes(item.href);
+        {/* Spacer for center alignment */}
+        <div className="flex-1" />
 
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-base font-normal border-b-2 transition ${
-                    isActive
-                      ? item.href === "/tracking"
-                        ? "text-orange-500 border-orange-500"
-                        : "text-blue-600 border-blue-600"
-                      : "text-gray-700 border-transparent hover:border-blue-600"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-        )}
-
-        {/* Language & Contact kanan */}
+        {/* Right side: Language, Tracking, Contact */}
         <div className="hidden md:flex justify-end items-center gap-4">
           <div className="relative" ref={dropdownRef}>
             <button
@@ -168,9 +139,23 @@ const Header = () => {
               )}
             </AnimatePresence>
           </div>
+          
+          {/* Tracking Link */}
+          <Link
+            href="/tracking"
+            className={`text-base font-medium transition-colors ${
+              pathname.includes("/tracking")
+                ? "text-orange-600"
+                : "text-gray-700 hover:text-orange-600"
+            }`}
+          >
+            {ready ? t("navigation.tracking") : "Tracking"}
+          </Link>
+          
+          {/* Contact Button */}
           <Link
             href="/contact"
-            className="bg-orange-600 text-white text-sm px-4 py-2 rounded-md hover:bg-blue-700 transition"
+            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-sm px-6 py-2.5 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300"
           >
             {t("navigation.contact")}
           </Link>
@@ -197,27 +182,23 @@ const Header = () => {
             className="md:hidden bg-white shadow-md overflow-hidden"
           >
             <div className="px-6 py-4 space-y-3">
-              {/* Menu navigasi hanya tampil di halaman utama */}
-              {!isSpecialPage &&
-                navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={`block text-base ${
-                      activeSection === item.href
-                        ? "text-blue-600 font-medium"
-                        : "text-gray-800"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              {/* Tracking Link */}
+              <Link
+                href="/tracking"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`block text-base ${
+                  pathname.includes("/tracking")
+                    ? "text-orange-600 font-medium"
+                    : "text-gray-800"
+                }`}
+              >
+                {ready ? t("navigation.tracking") : "Tracking"}
+              </Link>
 
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block mt-2 text-white bg-blue-600 text-sm text-center py-2 rounded-md hover:bg-blue-700"
+                className="block mt-2 text-white bg-gradient-to-r from-orange-500 to-orange-600 text-sm text-center py-2 rounded-md hover:from-orange-600 hover:to-orange-700"
               >
                 {t("navigation.contact")}
               </Link>

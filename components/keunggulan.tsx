@@ -18,7 +18,7 @@ const cardVariants = {
 };
 
 const Keunggulan = () => {
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
 
   const advantages = useMemo(
     () => [
@@ -55,6 +55,11 @@ const Keunggulan = () => {
     ],
     [t]
   );
+
+  // Don't render until translations are ready to prevent hydration mismatch
+  if (!ready) {
+    return null;
+  }
 
   return (
     <section className="bg-white py-20 px-6 md:px-16 font-montserrat" id="advantages">
