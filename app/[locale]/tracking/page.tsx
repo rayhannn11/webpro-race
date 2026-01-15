@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { useDebounce } from "@/lib/hooks/useDebounce";
 import { getTrackingDetails, TrackingData } from "@/lib/api";
@@ -15,13 +16,16 @@ function TrackingPageContent() {
   const [searchValue, setSearchValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [trackingData, setTrackingData] = useState<TrackingData | null>(null);
+  const [trackingData, setTrackingData] = useState<any | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
 
   const debouncedSearch = useDebounce(searchValue, 800);
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-  const handleSearch = async () => {
-    if (!searchValue.trim()) {
+  const handleSearch = async (msmParam?: string) => {
+    const msmToSearch = (msmParam ?? searchValue) || "";
+    if (!msmToSearch.trim()) {
       setTrackingData(null);
       setHasSearched(false);
       return;
@@ -32,14 +36,45 @@ function TrackingPageContent() {
     setHasSearched(true);
 
     try {
-      const response = await getTrackingDetails(searchValue, "msm");
+      const response = await getTrackingDetails(msmToSearch, "msm");
 
-      if (response.status.code === 200 && response.data.length > 0) {
-        setTrackingData(response.data[0]);
-      } else {
+      if (response.status?.code !== 200) {
         setTrackingData(null);
-        setError("Data tidak ditemukan");
+        setError(response.status?.message || "Terjadi kesalahan");
+        return;
       }
+
+      // Prefer detailed `data` response
+      if (
+        response.data &&
+        Array.isArray(response.data) &&
+        response.data.length > 0
+      ) {
+        setTrackingData({ type: "detail", payload: response.data[0] });
+        setError(null);
+        return;
+      }
+
+      // Fallback to `noref` list if provided by API
+      if (
+        response.noref &&
+        Array.isArray(response.noref) &&
+        response.noref.length > 0
+      ) {
+        setTrackingData({ type: "noref", payload: response.noref });
+        setError(null);
+        return;
+      }
+
+      // Fallback to `sekolah` object or other shapes
+      if (response.sekolah && Object.keys(response.sekolah).length > 0) {
+        setTrackingData({ type: "sekolah", payload: response.sekolah });
+        setError(null);
+        return;
+      }
+
+      setTrackingData(null);
+      setError("Data tidak ditemukan");
     } catch (err) {
       setError("Gagal memuat data tracking");
       setTrackingData(null);
@@ -50,8 +85,30 @@ function TrackingPageContent() {
 
   // Trigger search when user clicks button
   const onSearchClick = () => {
-    handleSearch();
+    if (!searchValue.trim()) return;
+    try {
+      const pathname = typeof window !== "undefined" ? window.location.pathname : "/";
+      router.push(`${pathname}?nosm=${encodeURIComponent(searchValue)}`);
+    } catch (e) {
+      // ignore routing errors
+    }
+    handleSearch(searchValue);
   };
+
+  // On mount, check if `nomsm` is present in URL and auto-search
+  useEffect(() => {
+    try {
+      const nomsm = searchParams?.get("nosm");
+      if (nomsm) {
+        setSearchValue(nomsm);
+        // perform search with param directly to avoid waiting for state update
+        handleSearch(nomsm);
+      }
+    } catch (e) {
+      // ignore malformed params
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const formatDate = (dateString: string) => {
     if (!dateString) return "-";
@@ -164,121 +221,198 @@ function TrackingPageContent() {
 
           {/* Results */}
           {trackingData && !loading && !error && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Left Side - Detail of delivery */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h2 className="text-2xl font-bold text-orange-500 mb-6">
-                  Detail of delivery
-                </h2>
+            <>
+              {trackingData.type === "detail" && (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Left Side - Detail of delivery */}
+                  <div className="bg-white rounded-lg shadow-md p-6">
+                    <h2 className="text-2xl font-bold text-orange-500 mb-6">
+                      Detail of delivery
+                    </h2>
 
-                <div className="space-y-6">
-                  {/* Alamat Asal */}
-                  <div>
-                    <h3 className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-2">
-                      Alamat Asal
-                    </h3>
-                    <p className="text-gray-900 font-semibold text-base">
-                      {trackingData.alamatMuat.pic}
-                    </p>
-                    <p className="text-gray-600 text-sm mt-1 leading-relaxed">
-                      {trackingData.alamatMuat.alamat || "-"}
-                    </p>
+                    <div className="space-y-6">
+                      {/* Alamat Asal */}
+                      <div>
+                        <h3 className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-2">
+                          Alamat Asal
+                        </h3>
+                        <p className="text-gray-900 font-semibold text-base">
+                          {trackingData.payload.alamatMuat?.pic ?? "-"}
+                        </p>
+                        <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                          {trackingData.payload.alamatMuat?.alamat ?? "-"}
+                        </p>
+                      </div>
+
+                      {/* Alamat Tujuan */}
+                      <div>
+                        <h3 className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-2">
+                          Alamat Tujuan
+                        </h3>
+                        <p className="text-gray-900 font-semibold text-base">
+                          {trackingData.payload.alamatBongkar?.pic ?? "-"}
+                        </p>
+                        <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+                          {trackingData.payload.alamatBongkar?.alamat ?? "-"}
+                        </p>
+                      </div>
+
+                      {/* Ikat/Koli/Qty/Berat */}
+                      <div>
+                        <h3 className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-2">
+                          Ikat/Koli/Qty/Berat
+                        </h3>
+                        <p className="text-gray-900 font-semibold text-base">
+                          {trackingData.payload.ikat ?? "-"}/
+                          {trackingData.payload.koli ?? "-"}/
+                          {trackingData.payload.qty ?? "-"}/
+                          {trackingData.payload.berat ?? "-"}
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Alamat Tujuan */}
-                  <div>
-                    <h3 className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-2">
-                      Alamat Tujuan
-                    </h3>
-                    <p className="text-gray-900 font-semibold text-base">
-                      {trackingData.alamatBongkar.pic}
-                    </p>
-                    <p className="text-gray-600 text-sm mt-1 leading-relaxed">
-                      {trackingData.alamatBongkar.alamat}
-                    </p>
-                  </div>
+                  {/* Right Side - Map & Driver Info */}
+                  <div className="bg-white rounded-lg shadow-md p-6">
+                    <div className="bg-gray-100 rounded-lg h-64 mb-4 flex items-center justify-center overflow-hidden">
+                      {trackingData.payload.positionDriverNow?.latitude &&
+                      trackingData.payload.positionDriverNow?.longitude ? (
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          frameBorder="0"
+                          style={{ border: 0 }}
+                          src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${trackingData.payload.positionDriverNow.latitude},${trackingData.payload.positionDriverNow.longitude}&zoom=15`}
+                          allowFullScreen
+                        />
+                      ) : (
+                        <p className="text-gray-500">Map tidak tersedia</p>
+                      )}
+                    </div>
 
-                  {/* Ikat/Koli/Qty/Berat */}
-                  <div>
-                    <h3 className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-2">
-                      Ikat/Koli/Qty/Berat
-                    </h3>
-                    <p className="text-gray-900 font-semibold text-base">
-                      {trackingData.ikat}/{trackingData.koli}/{trackingData.qty}
-                      /{trackingData.berat}
-                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-1">
+                          Nama Driver
+                        </p>
+                        <p className="text-gray-900 font-semibold text-base">
+                          {trackingData.payload.driver || "-"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-1">
+                          No Telp Driver
+                        </p>
+                        <p className="text-gray-900 font-semibold text-base">
+                          {trackingData.payload.telp || "-"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-1">
+                          Jenis Kendaraan
+                        </p>
+                        <p className="text-gray-900 font-semibold text-base">
+                          {trackingData.payload.jenisKendaraan || "-"}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-1">
+                          Nopol
+                        </p>
+                        <p className="text-gray-900 font-semibold text-base">
+                          {trackingData.payload.nopol || "-"}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 pt-4 ">
+                      <p className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-2">
+                        Lokasi Driver Terkini
+                      </p>
+                      <p className="text-sm text-gray-900 font-medium leading-relaxed">
+                        {renderAddress(
+                          trackingData.payload.positionDriverNow?.address
+                        )}
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1">
+                        Update terakhir:{" "}
+                        {formatDate(
+                          trackingData.payload.positionDriverNow?.lastUpdate ??
+                            ""
+                        )}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
-              {/* Right Side - Map & Driver Info */}
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="bg-gray-100 rounded-lg h-64 mb-4 flex items-center justify-center overflow-hidden">
-                  {trackingData.positionDriverNow.latitude &&
-                  trackingData.positionDriverNow.longitude ? (
-                    <iframe
-                      width="100%"
-                      height="100%"
-                      frameBorder="0"
-                      style={{ border: 0 }}
-                      src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${trackingData.positionDriverNow.latitude},${trackingData.positionDriverNow.longitude}&zoom=15`}
-                      allowFullScreen
-                    />
-                  ) : (
-                    <p className="text-gray-500">Map tidak tersedia</p>
-                  )}
+              {trackingData.type === "noref" && (
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <h2 className="text-2xl font-bold text-orange-500 mb-4">
+                    Daftar Referensi
+                  </h2>
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead>
+                        <tr className="bg-gray-50">
+                          <th className="text-left py-3 px-4 text-sm font-bold">
+                            Referensi
+                          </th>
+                          <th className="text-left py-3 px-4 text-sm font-bold">
+                            Sales
+                          </th>
+                          <th className="text-left py-3 px-4 text-sm font-bold">
+                            Sekolah
+                          </th>
+                          <th className="text-left py-3 px-4 text-sm font-bold">
+                            Tgl SJ
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {trackingData.payload.map((r: any, i: number) => (
+                          <tr
+                            key={i}
+                            className={i % 2 === 0 ? "bg-slate-50" : "bg-white"}
+                          >
+                            <td className="py-3 px-4 text-sm">
+                              {r.referensi || "-"}
+                            </td>
+                            <td className="py-3 px-4 text-sm">
+                              {r.sales || "-"}
+                            </td>
+                            <td className="py-3 px-4 text-sm">
+                              {r.sekolah || "-"}
+                            </td>
+                            <td className="py-3 px-4 text-sm">
+                              {r.tglSJ || "-"}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+              )}
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-1">
-                      Nama Driver
-                    </p>
-                    <p className="text-gray-900 font-semibold text-base">
-                      {trackingData.driver || "-"}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-1">
-                      No Telp Driver
-                    </p>
-                    <p className="text-gray-900 font-semibold text-base">{trackingData.telp || "-"}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-1">
-                      Jenis Kendaraan
-                    </p>
-                    <p className="text-gray-900 font-semibold text-base">
-                      {trackingData.jenisKendaraan || "-"}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-1">Nopol</p>
-                    <p className="text-gray-900 font-semibold text-base">{trackingData.nopol || "-"}</p>
-                  </div>
+              {trackingData.type === "sekolah" && (
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <h2 className="text-2xl font-bold text-orange-500 mb-4">
+                    Data Sekolah
+                  </h2>
+                  <pre className="text-sm text-gray-700 whitespace-pre-wrap">
+                    {JSON.stringify(trackingData.payload, null, 2)}
+                  </pre>
                 </div>
-
-                <div className="mt-4 pt-4 ">
-                  <p className="text-xs uppercase font-bold text-gray-500 tracking-wide mb-2">
-                    Lokasi Driver Terkini
-                  </p>
-                  <p className="text-sm text-gray-900 font-medium leading-relaxed">
-                    {renderAddress(trackingData.positionDriverNow.address)}
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">
-                    Update terakhir:{" "}
-                    {formatDate(trackingData.positionDriverNow.lastUpdate)}
-                  </p>
-                </div>
-              </div>
-            </div>
+              )}
+            </>
           )}
 
           {/* History Pengiriman */}
-          {trackingData &&
+          {trackingData?.type === "detail" &&
             !loading &&
             !error &&
-            trackingData.statusKendaraan.length > 0 && (
+            (trackingData.payload.statusKendaraan?.length ?? 0) > 0 && (
               <div className="bg-white rounded-lg shadow-md p-6 mt-6">
                 <h2 className="text-2xl font-bold text-orange-500 mb-6">
                   History Pengiriman
@@ -303,50 +437,56 @@ function TrackingPageContent() {
                       </tr>
                     </thead>
                     <tbody>
-                      {trackingData.statusKendaraan.map((status, index) => (
-                        <tr
-                          key={index}
-                          className={`${
-                            index % 2 === 0 ? "bg-slate-50" : "bg-white"
-                          } hover:bg-blue-50 transition-colors duration-150`}
-                        >
-                          <td className="py-4 px-6 text-sm">
-                            <div className="text-gray-900 font-semibold">{formatDate(status.date)}</div>
-                          </td>
-                          <td className="py-4 px-6">
-                            <div className="font-bold text-gray-900 text-sm">{status.status}</div>
-                            <div className="text-gray-600 text-xs mt-1 leading-relaxed">
-                              {status.keterangan}
-                            </div>
-                          </td>
-                          <td className="py-4 px-6 text-sm text-gray-700">
-                            {status.memo || "No memo"}
-                          </td>
-                          <td className="py-4 px-4">
-                            {typeof status.foto === "string" &&
-                            !status.foto.includes("no-pictures") ? (
-                              <a
-                                href={String(status.foto)}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block"
-                              >
-                                <Image
-                                  src={String(status.foto)}
-                                  alt="Status foto"
-                                  width={80}
-                                  height={80}
-                                  className="rounded object-cover cursor-pointer hover:opacity-80 transition"
-                                />
-                              </a>
-                            ) : (
-                              <div className="w-20 h-20 bg-gray-200 rounded flex items-center justify-center text-xs text-gray-500">
-                                No Image
+                      {trackingData.payload.statusKendaraan.map(
+                        (status: any, index: number) => (
+                          <tr
+                            key={index}
+                            className={`${
+                              index % 2 === 0 ? "bg-slate-50" : "bg-white"
+                            } hover:bg-blue-50 transition-colors duration-150`}
+                          >
+                            <td className="py-4 px-6 text-sm">
+                              <div className="text-gray-900 font-semibold">
+                                {formatDate(status.date)}
                               </div>
-                            )}
-                          </td>
-                        </tr>
-                      ))}
+                            </td>
+                            <td className="py-4 px-6">
+                              <div className="font-bold text-gray-900 text-sm">
+                                {status.status}
+                              </div>
+                              <div className="text-gray-600 text-xs mt-1 leading-relaxed">
+                                {status.keterangan}
+                              </div>
+                            </td>
+                            <td className="py-4 px-6 text-sm text-gray-700">
+                              {status.memo || "No memo"}
+                            </td>
+                            <td className="py-4 px-4">
+                              {typeof status.foto === "string" &&
+                              !status.foto.includes("no-pictures") ? (
+                                <a
+                                  href={String(status.foto)}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="block"
+                                >
+                                  <Image
+                                    src={String(status.foto)}
+                                    alt="Status foto"
+                                    width={80}
+                                    height={80}
+                                    className="rounded object-cover cursor-pointer hover:opacity-80 transition"
+                                  />
+                                </a>
+                              ) : (
+                                <div className="w-20 h-20 bg-gray-200 rounded flex items-center justify-center text-xs text-gray-500">
+                                  No Image
+                                </div>
+                              )}
+                            </td>
+                          </tr>
+                        )
+                      )}
                     </tbody>
                   </table>
                 </div>
